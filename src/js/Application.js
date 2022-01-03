@@ -15,15 +15,22 @@ export default class Application extends EventEmitter {
   }
   setEmojis(emojis) {
     this.emojis = emojis;
+    document.getElementById("emojis").innerHTML = "";
+    let theDiv = document.getElementById("emojis");
+    for(let i = 0;i<emojis.length;i++){
+      let para = document.createElement("p");
+      para.textContent= emojis[i];
+      theDiv.appendChild(para);
+    }
   }
 
   addBananas() {
     document.getElementById("emojis").innerHTML = "";
     let theDiv = document.getElementById("emojis");
     let modifiedEmojis = this.emojis.map((element)=>{return element+this.banana;});
-    for(element in modifiedEmojis){
+    for(let i = 0;i<modifiedEmojis.length;i++){
       let para = document.createElement("p");
-      para.textContent= element;
+      para.textContent= modifiedEmojis[i];
       theDiv.appendChild(para);
     }
   }
